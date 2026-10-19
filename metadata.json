@@ -1,0 +1,8 @@
+{
+  "name": "PEWA — Food & Beverage Menu Infrastructure",
+  "description": "Reusable multi-tenant menu publishing, discovery, and structured ordering infrastructure with mobile-first PWA, merchant workspace, hotel guest access, and real-time order lifecycle.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

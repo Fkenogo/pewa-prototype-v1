@@ -1,0 +1,392 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww23280\viewh12760\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Audit passed on all five heading checks with zero rewrites required. Writing the report.\
+\
+# Menu Classification Research and the Proposed PEWA Standard\
+\
+## 1. Executive Summary\
+\
+Menu classification is not one taxonomy. It is a small set of largely independent dimensions that commercial platforms routinely conflate, and the evidence assembled here shows that any single category tree will fail PEWA's stated requirements within months of use.\
+\
+The clearest demonstration is that the major platforms do not agree with each other on the same basic question. Toast treats the top level of the menu as simultaneously content and occasion, with menus named "Food", "Drinks", "Bar", "Lunch", "Dinner" and "Happy Hour" in the same list [1]. Square separates the same two concerns, holding categories for reporting and routing while menus are scoped by both time and location [3]. Lightspeed separates a third concern again, treating the screen rather than the category as the thing an item is placed on [5]. A structure that satisfies one of these vendors contradicts the others.\
+\
+Four findings shape the recommendation.\
+\
+First, the eight concepts named in the assignment brief are genuinely distinct objects, and four of them must never be modelled as categories. Course is a position in an eating sequence. Meal occasion is an availability window. Menu type is a pricing and service construct. Modifier is a configurable option on an item. Only the culinary category tree is a classification in the ordinary sense.\
+\
+Second, East African menus do not merely add dishes to the Western template; they use a different organising logic. The prevailing meal is a staple, a stew or sauce, and an accompaniment, eaten together from shared bowls rather than sequenced as courses. A Rwandan guesthouse menu describes ugali as "a thick, starchy side dish that is often served with meat" and sells it as a line item [20]; a Kigali restaurant sells "Grilled Tilapia with Ugali" as a single dish name, folding the staple into the dish [19]. Any standard library built on a starter/main-course/side spine will misclassify these businesses.\
+\
+Third, allergen and dietary handling has a regulatory asymmetry that PEWA must make a deliberate choice about. International standards require allergen declaration for prepackaged food [6][7][11], and Codex guidance extends allergen management to food service while requiring that accurate information be available at the point of sale when food is not prepackaged [12]. The East African regional standard, however, still mandates labelling only for prepackaged foods, defining "foods for catering purposes" as an input category rather than a labelling obligation [6][7]. PEWA would therefore be publishing safety information ahead of the regulatory floor in its priority markets, which means the governance burden is self-imposed and must be conservative by design.\
+\
+Fourth, reuse and localisation are already solved commercially, but never for taxonomy. Toast documents that menu items can be shared across groups while menu groups cannot [1]; Clover maintains separate point-of-sale and customer-facing names for the same item and lets an online category label differ from the inventory name [4]; ArtCaffe in Nairobi publishes an identical category set across six branches while running those branches as restaurant, grocery, deli and wine cellar [24]. The reusable unit is the item; the reusable presentation unit is the placement.\
+\
+The proposed response is a seven-dimension model in which exactly one dimension is hierarchical, a four-tier status system (Core, Optional, Regional, Candidate) that makes cultural specificity a legitimate structural choice rather than a concession, and an attribute layer that separates verifiable facts, business-declared claims and consultant-inferred classifications into different trust bands.\
+\
+## 2. Scope, Sources and Method\
+\
+This study examines how food and beverage menus are classified, organised, presented and searched, and proposes a classification library PEWA can offer to businesses while permitting controlled local variation. It covers the eight mandated research areas and supports four companion deliverables.\
+\
+Evidence was drawn from four source classes, which are kept distinct throughout and marked inline. **Observed** marks material read directly from a named menu, a vendor's own product documentation, or the text of a published standard. **Practice** marks a convention that recurs independently across several commercial sources. **Interpretation** marks consultant reasoning that goes beyond what any single source states. **Recommendation** marks a PEWA-specific proposal with no external precedent claim attached.\
+\
+Source classes are not equally reliable. Vendor product documentation (Toast, Square, Clover, Lightspeed) is first-party and reliable about its own behaviour, silent about best practice. Standards texts (Codex, EAS, national adoptions) are authoritative but usually address packaging rather than served food. Real restaurant menus are the only direct evidence of practice, but they change without notice, so every observed menu here carries an observation date. Menu-design consultancies and bar-menu vendors appear frequently in the search space and are treated as **Practice** only where three or more independent such sources converge, and never as authority.\
+\
+Boundaries were respected: no application code, schema, API or interface design is proposed, no binding architectural or commercial decision is taken, and no assumption is made that any business must adopt the full library.\
+\
+## 3. Menu Classification as Independent Dimensions\
+\
+### 3.1 Menu type, course, occasion, category and modifier\
+\
+The brief lists eleven structural concepts. They collapse into three genuinely different kinds of object, and conflating them is the most common defect in menu systems.\
+\
+A **classification** groups items by a property of the item itself. Only the culinary category tree, such as starters, soups, salads and desserts, behaves this way. The National Restaurant Association's canonical sequence runs appetizers, soups, salads, sandwiches, entrees, vegetables, desserts and beverages [34], and this ordering recurs across casual and fine dining worldwide.\
+\
+An **availability rule** says when something can be had. Square's menus are scoped by both time and location, which is the clearest commercial statement that a menu is a time-bounded, location-bounded surface rather than a taxonomy [3]. Toast reaches the same place from a different direction by naming menus "Lunch", "Dinner" and "Happy Hour" alongside content-named menus in the same list [1].\
+\
+A **pricing and service construct** says how a meal is composed and charged. The National Restaurant Association distinguishes a la carte, table d'hote, semi-a-la-carte, California-style, cyclical, banquet and prix fixe menus [34], and Ugandan and Rwandan hotels show the distinction in live use, offering buffet service, table d'hote, a la carte and 24-hour in-room dining as separate published offerings [35][36].\
+\
+**Course** belongs to none of these. A course is a position in the sequence of a single meal, not a property of a dish, and courses are positional by nature: an item offered in the salad section can be eaten first. Toast confirms the separation by exposing course assignment as a feature independent of the menu hierarchy [2], and hotel menus confirm it commercially, where the Ivy in London shows a "2 COURSES" and "3 COURSES" price pair with per-item supplements charged on top [34]. Supplement is a modifier, not a course.\
+\
+The practical consequence for PEWA is that category, occasion, type and course must be separate objects with separate lifecycles. A category ("Grills") may appear on several menus at different times. A course assignment is a display convention applied at the point of service. A menu type is a property of a menu collection. Conflating them produces the specific failure seen in a real Ugandan menu, where breakfast dishes, grill items and a misspelled "Platers to Share" section sit as siblings with no organising principle [21].\
+\
+### 3.2 Three incompatible platform decompositions\
+\
+Commercial systems disagree about where the top of the hierarchy sits, and the disagreement is structural rather than cosmetic. The table below sets the three main decompositions side by side so the incompatibility is visible rather than assumed.\
+\
+| System | Top level | Second level | Reuse unit | Explicitly separate from the hierarchy |\
+| --- | --- | --- | --- | --- |\
+| Toast | Menu, named for content or occasion | Menu group, then up to three subgroup levels | Menu item (groups are not shareable) | Sales categories; courses; modifiers [1][2] |\
+| Square | Menu, scoped by time and location | Category | Item | Categories for reporting and routing [3] |\
+| Lightspeed | Menu | Screen, within a 20-screen limit | Item, placed onto screens | Item type: single, combo or item group [5] |\
+| Clover | Menu | Category and section, within a 1,000 combined item/modifier/category ceiling | Item, with separate point-of-sale and online names | Point-of-sale name versus customer-facing name [4] |\
+\
+The pattern that matters is not the labels but the reuse rule. Three of the four systems permit an item to appear in many places, and one of them (Toast) blocks sharing at group level while permitting it at item level [1]. That asymmetry is exactly the behaviour PEWA's multi-location requirement needs, and it arrived in commerce without anyone calling it a taxonomy principle.\
+\
+Two further observations sharpen the model. Toast's online ordering surface does not support subgroups and flattens them, while its point-of-sale surface does [2]. Hierarchy depth is therefore a property of the publishing channel, not of the data, which argues for storing depth independently of rendering. Clover's separate internal and customer-facing names [4] demonstrate the same point from the naming direction: the stored record and the published string are different things, and a standard library needs both.\
+\
+### 3.3 Performance classification and menu engineering\
+\
+The most common confusion in restaurant menu literature is between a presentation taxonomy and a performance framework. Menu engineering, developed at Michigan State University, classifies items on a two-axis grid of popularity against profitability into Stars, Plowhorses, Puzzles and Dogs, and the framework is genuinely powerful for pricing and placement decisions [34].\
+\
+It is not a classification library, and treating it as one would corrupt any standard offered to businesses. A Star can be a burger or a cocktail or a plate of ugali; the label describes commercial performance, not culinary identity. Performance also changes week to week, whereas a category must be stable enough to be searchable and governable. PEWA should keep menu engineering entirely outside the classification library and, if it is ever offered, model it as an analytic overlay on menu-item records rather than as a category.\
+\
+The same separation applies to product-trade taxonomies. The GS1 Global Product Classification and UNSPSC both classify trade items in a strict hierarchical product structure [32][33]. They describe what physically moves in commerce, identified by a GTIN, and a restaurant menu sells preparations that are not units of trade. Mapping menu items to GPC for reporting or supply analysis is legitimate and occasionally useful; using GPC as the menu taxonomy would force every dish into a retail shape it does not have.\
+\
+## 4. Global Food Category Practice (Area A)\
+\
+Across casual dining, fine dining, quick service, hotels, cafes, food halls, takeaways and delivery kitchens, a recognisable core set recurs, but its composition varies systematically by service format and the categories are frequently presentational rather than semantic.\
+\
+The stable core, observed across essentially every full-service menu examined, is starters or appetizers, soups, salads, main courses or entrees, and desserts, with beverages attached somewhere. Everything else is contingent.\
+\
+Format drives the variation more than geography. Quick-service and delivery menus rely on a smaller set of anchor categories, because the category exists to route items rather than to describe them. Uber Eats' own product documentation treats a category as a logical menu section such as "Appetizers", "Main Courses" or "Soft Drinks", and separately treats a menu as a grouping of categories with its own hours, such as a "Brunch Menu" or "Late Night Menu" [2]. Deliveroo's catalogue model requires exactly two levels of grouping, caps the number of lower-level categories and recommends a range of five to seven per group [4]. These are routing decisions, and they are the clearest evidence in the research that the category tree is serving a machine as much as a reader.\
+\
+Fine dining adds courses and tasting structure, frequently as a fixed sequence with supplements. Hotel restaurants add a drinks menu as a separate document rather than a section, observed across properties where the food and beverage offerings are published as distinct menus [35][36].\
+\
+Categories are frequently created for presentation reasons and carry no semantic content. A Rwandan menu observed in October 2026 used "PASTA CLUB" as a category heading, which is a house brand rather than a culinary type [35]. A Cape Town menu separates "Starches" from "Sides", a distinction that is real but is not one the Western template teaches [23]. A Kampala menu uses "Platers to Share" where an Anglophone reader would expect "Platters", and uses "Cold Starters" and "Soup" as separate siblings [21]. Each of these is a house convention, and a standard library that cannot accommodate them will be abandoned.\
+\
+Two categories deserve separate mention because they are routinely mishandled. **Combos and meal deals** are composite items built from other items, not a culinary class. Deliveroo models a bundle as a distinct item type carrying its own components and pricing [4], and the pattern is visible in East African practice, where a Kampala restaurant sells a mixed grill platter defined as "choose any 4" [21] and a Nairobi bakery sells a pastry selection defined as "choose 4" [24]. **Sides and accompaniments** straddle two systems. The same Fries item can be a top-level menu entry and a modifier attached to a burger; Toast supports exactly this through modifier item references [2]. Modelling sides as both is necessary, and choosing between the two is a menu-level decision, not an item-level one.\
+\
+## 5. African and Regional Classification (Area B)\
+\
+### 5.1 The starch-stew-sauce meal model\
+\
+The most consequential finding in this study is that East African local-food menus are organised on a different principle from the Western template, and that the difference is structural rather than decorative.\
+\
+The principle is compositional. Sources describing Burundi state the pattern directly: everyday food is a starch, a stew and a sauce; meals are not courses but shared bowls; and beans function as a base rather than an accompaniment. The same structure recurs across the priority markets. In Kenya, the most frequently described plate is ugali with sukuma wiki. In Uganda, matoke is served with a groundnut or bean sauce. In Tanzania, ugali with stew is the standard local-eatery order. In Rwanda, isombe is served alongside ubugali. A "plate of sombe" and a bulk "sombe (2kg)" sold side by side on the same Rwandan menu [19] show the staple being portioned and sold as its own line, which is a staple-led model rather than a course-led one.\
+\
+The staple appears in three distinct structural positions in real menus, and a standard library must support all three:\
+\
+1. Folded into the dish name, as in "Grilled Tilapia with Ugali" [19].\
+2. Sold as an independently priced line described as a side dish, as at a Rwandan guesthouse where ugali carries its own price and its own description as a thick starchy side served with meat [20].\
+3. Bundled into a composite meal set, as in a menu offering a named set that specifies a starch and an accompaniment.\
+\
+The second position is what breaks the Western template. A guesthouse menu that sells ugali, brochettes, inyamo n'ibirayi, urukwavu, inkoko and isambaza as separate priced lines with no starter, main or dessert sections [20] is not an impoverished Western menu. It is a complete menu in a different idiom, and one that a course-based taxonomy would render meaningless.\
+\
+A related observation follows from the same model: accompaniments carry more weight than they do in Western framing. Kachumbari, a raw tomato and onion relish, appears as a menu line in its own right on a Rwandan menu [19] and as a named accompaniment on a hotel lounge menu in the same city [35], where it accompanies mishkaki and glazed pork ribs. A relish that is simultaneously a salad-position item, a mandatory side and a house signature cannot be classified by placement alone. It needs both a category assignment and an attribute.\
+\
+### 5.2 Burundi, Rwanda, Uganda, Kenya and Tanzania\
+\
+Direct menu evidence is uneven across the five priority markets, and the unevenness is itself a finding. Rwanda, Uganda, Kenya and Tanzania yielded full menu documents during this study. Burundi did not.\
+\
+**Rwanda** produced the richest observed evidence. A Kigali restaurant menu observed in October 2026 organises around snacks and starters, soups, a salad block, a main block and a drinks and desserts block, with items such as beef brochettes, fish brochettes, a goat dish, a pork dish and the house-branded "Twatundi" prefix recurring across the mains as a signature preparation [19]. The same menu sold isombe both as a plated portion and by weight, and carried prices in Rwandan francs inclusive of applicable taxes [19]. A Kigali guesthouse menu sold ugali, brochettes, inyamo n'ibirayi, urukwavu, inkoko, isambaza and pasta with dried meat as flat priced lines [20]. A Kigali hotel published a separate Italian and a lounge menu, with the lounge offering mishkaki and glazed pork ribs served with kachumbari, alongside jollof rice, South Indian curry, butter chicken and bibimbap [35]. The Italian menu used a coded multi-letter suffix notation on items and modifiers and a "PASTA CLUB" heading [35].\
+\
+**Uganda** yielded a Kampala menu with cold starters, soup, grill items and a sharing section, with items including an antelope or buffalo sausage omelette roll described as a roadside classic variation, and an impala dish named for the city [21]. A Kampala buffet offer spans two to seven courses in both seated and buffet formats [21]. The same venue describes its own cuisine to aggregators as steakhouse, barbecue and fusion, and its meal types as lunch, dinner, brunch and drinks [21], which shows a platform attaching cuisine and occasion as facets on top of a menu rather than encoding them in it.\
+\
+**Kenya** yielded a Nairobi bakery and restaurant chain publishing an identical seven-category set, covering pastries and sweets, breads, cakes, hot and iced teas, hot and iced coffees, breakfast, and starters and sharing, across six branches that operate under different formats including a grocery, deli and wine cellar [24]. The same chain sells a four-pastry selection box and a time-limited single coffee and pastry combination [24]. Hotel brunch sets are composed as an explicit selection from existing items across bread, salad, starters, mains, dessert and an alcoholic beverage [29].\
+\
+**Tanzania** yielded a Dar es Salaam restaurant publishing counts of its own structure, with eleven breakfast dishes, thirty-eight Swahili lunch dishes, twenty-two international lunch dishes, a platter section and a drinks and desserts section, across three cuisines from one kitchen [22]. This is a compact and unusually explicit instance of cuisine acting as a sub-dimension of occasion. A second Dar es Salaam menu priced in Tanzanian shillings sold beef mishikaki, sekela chicken, mbuzi choma, makange fish and curry chicken with rice and chapati [22].\
+\
+**Burundi** is the documented weak point. Dish evidence is adequate and consistent, covering ubugali and its variants, isombe, matoke, brochettes, ibiharage, uk wake, inkoko, inyamo n'ibirayi, isambaza, ndagala and renga renga, together with venues, preparation methods and typical price points in francs. Menu structure evidence is not. One independent observation is worth recording because it is unusual: a Kigali restaurant's "Fish" line carries a description of isombe, so the published name and the description disagree [20]. Whatever PEWA concludes about data quality in small independent businesses, that single case is a real one.\
+\
+### 5.3 North, West, Southern and Central Africa\
+\
+Coverage across the rest of the continent is materially thinner than for East Africa, and the report treats it accordingly.\
+\
+**West Africa** shows a staple-and-soup structure parallel to the East African model but with different staple forms. Observed menus in London, Canada and South Africa organise around swallow dishes, with banku, tuo zaafi, pounded yam, eba, fufu and amala named as staples, and some menus separating swallow items into types within the same dish, such as swallow with pounded yam and swallow with eba [4]. Categories observed include rice and plate dishes, swallows and bowls, sides and small bites, soups and stews, grills and proteins, and a small chops category for fried pastry snacks [4][34]. Portion sizing appears in the category names themselves, with half and full portions distinguished [34]. One observation is diagnostically valuable: a Ghanaian restaurant listing organises its offering as individual dishes acting as headings, each containing a long comma-separated list of around sixty items, at prices expressed from a few tens of Ghanaian pesewas [34]. This is what an ungoverned taxonomy looks like in practice, and it is the clearest available argument for PEWA offering a structured alternative.\
+\
+**Southern Africa** separates starches from sides explicitly, a distinction not present in most Western menus, and divides its offerings into small plates, flatbreads, braai bowls, sharing feasts, a modular "add to your feast" structure, a kitchen section, pasta, seafood, a main attraction, starches, sides, sauces and desserts [23]. Starches are named as pap, chips, jeqe and spiced rice, and sides as slaw, shatini, chakalaka and sweet corn [23]. Seasonal rotation is stated on the menu itself [23].\
+\
+**North Africa** is the weakest area of this study. Dish inventories are well documented, covering tagines, couscous, kabsa, pastilla, koshari, harissa and a broad mezzeriad of cold dips, but published menu *structure* for North African restaurants rests on a single secondary source describing a conventional sequence of cold starters with bread, soups, salads, main courses and desserts. That is enough to propose a mezze-shaped family set, and not enough to claim it as observed practice.\
+\
+**Central Africa** beyond the Great Lakes, including Cameroon, the Congo basin and Angola, was not researched to a comparable depth and is a genuine gap rather than a finding.\
+\
+## 6. Beverages and Specialist Food Businesses (Area C)\
+\
+The beverage taxonomy is better settled than the food taxonomy, because the underlying classifications are partly physical. Beer splits naturally into draught and packaged, then into style; wine splits into by-the-glass and by-the-bottle; spirits split by base. Industry practice for bar menus converges on a recognisable section set of signature or house cocktails, classics, beer, wine, spirits, low and no alcohol, and food, with consistent independent sourcing [27]. The arrangement is presented as operator guidance rather than as a standard, and the sources are menu-design vendors, so this is recorded as **Practice** with moderate confidence.\
+\
+In the East African market the beer axis carries an additional dimension that Western taxonomies lack. Local beer portfolios are organised around three distinct axes: lager, malt, and non-alcoholic or low-alcohol [26]. Malt drinks in these markets are frequently low-alcohol or alcohol-free, which makes an age-restriction attribute materially different for a malt product than for a lager. Traditional and fermented drinks form a fourth group, including urwagwa, a fermented banana drink, chibuku, and the Swahili generic term pombe for beer, with one source noting that over ninety per cent of Tanzanian beer consumption is of homemade-style brews [25]. Brand nicknames function as search synonyms in the market, with Serengeti known as chui and Kilimanjaro commonly shortened to Kili [25].\
+\
+Specialist food businesses overlap the general restaurant taxonomy more than is usually acknowledged. The ArtCaffe category set cited above contains pastries, breads, cakes, teas, coffees and breakfast in a single structure [24], and a Ghanaian listing mixes full English and American breakfasts, waffles, pancakes, chibom, hotdogs and baked goods into the same pages as jollof, banku and light soup [34]. A bakery, a cafe and a casual restaurant are the same list under different names. A standard library should model bakery and cafe families and let a business mix them, rather than assigning a business to a single type that then constrains which categories it may use.\
+\
+Two areas remain weakly evidenced. Wine classification rests on standard industry convention without a specific observed menu from the priority markets. Tea deserves more attention than it received: the East African tea category, including the spiced, sweetened and ginger preparations that behave differently from leaf tea, was not researched in depth and is a gap.\
+\
+## 7. Menu Structure and Presentation (Area D)\
+\
+Resolving the brief's eleven concepts against the evidence produces a single structural answer, shown here as the proposed object model with the dimension each concept belongs to.\
+\
+| Concept | Kind of object | Belongs to | Hierarchical |\
+| --- | --- | --- | --- |\
+| Menu collection | Container owned by a business | Business or location | No |\
+| Named menu | Published orderable surface | Menu collection | No |\
+| Menu type | Pricing and service construct | Menu collection | No |\
+| Service period or occasion | Availability window | Named menu | No |\
+| Category | Classification of items by culinary property | Named menu | Yes, the only one |\
+| Course | Position in an eating sequence | Service | No |\
+| Menu section | Presentation container within a menu | Named menu | Shallow only |\
+| Menu item | Sellable item | Business catalogue | No |\
+| Combo or bundle | Composite item built from other items | Business catalogue | No |\
+| Side or accompaniment | Item referenced as a companion | Referenced by item or modifier | No |\
+| Modifier | Configurable choice on an item | Item | No |\
+| Tag or attribute | Faceted descriptor | Item or category | No |\
+\
+The finding that matters here is which row is hierarchical. Only the category row, and only within the constraint that it is scoped to a single named menu. Everything else is a flat relation. A category cannot sensibly exist across menus with different availability; an item can.\
+\
+Menu sections deserve a warning because the word is overloaded. In casual use a section is any visible block. In Toast the term belongs to the hierarchy, between menu and menu group [1]. In Lightspeed the equivalent is a screen, capped at twenty per menu [5]. Deliveroo calls the two levels groups and item categories and disallows a third [4]. PEWA should reserve "section" for presentation grouping and never use it as a synonym for category, and should cap rendered depth per channel in the same way Toast and Deliveroo do, because depth is a channel property.\
+\
+## 8. Tags, Attributes and Filters (Area E)\
+\
+### 8.1 Factual attributes, declared claims and inferred classifications\
+\
+The evidence supports three distinct trust bands for attributes, and the brief's request to separate them is well founded.\
+\
+**Verifiable attributes** derive from the item's composition or physical state. Allergens, ingredients, serving temperature, portion weight and alcohol content belong here. Uber Eats' data model carries preparation type, whether an item can be served alone, and whether it is alcoholic as structured fields rather than free text [2], and its merchant tools expose temperature, dietary style, cuisine type, meal type and protein type as fixed attribute vocabularies [2]. That the largest delivery platform treats these as a closed vocabulary rather than free text is strong evidence that a standard library should specify permitted values.\
+\
+**Business-declared claims** are assertions the business makes about its own offering. Vegetarian, vegan, halal, kosher, gluten-free and "locally sourced" belong here, because they are verifiable only against the kitchen's practice, not against the item record. East African hospitality groups publish exactly such a list as an amenity vocabulary, covering gluten-free options, lactose-free options, vegan options, vegetarian options, buffet, grab-and-go and room service, alongside a statement that the property can cater to dietary requirements [35]. The vocabulary is real; the guarantees behind each term are not standardised anywhere in the sources reviewed.\
+\
+**Inferred classifications** are the consultant's reading, and they should not be published as fact. A cream-based sauce described as "mushroom" may contain dairy; a menu item described as grilled may share a surface with shellfish. Published menus demonstrate both risks directly: a real Ugandan menu misspells "Platters" and prints its section name as "Platers" [21], and a Rwandan guesthouse menu attaches an isombe description to an item named "Fish" [20].\
+\
+Spice level, portion size and availability are a fourth category and belong to neither band. They are partly factual and partly conventional, and they are among the most frequently customer-facing filters in East African delivery, where merchants are advised to state quantities and explicitly to declare gluten-free, vegan and lactose-free options [30].\
+\
+Multilingual and synonym handling is a first-class requirement rather than a refinement. In Kenya, English and Kiswahili are the official languages and consumer-ready food labelling requires English and or Kiswahili [15], while the de facto language of Nairobi restaurant menus is English. In Tanzania and Uganda, Kiswahili names are commonplace in item names, and the loanword menu is itself unassimilated in ordinary restaurant speech. In Burundi, French handles signage and menus while Kirundi dominates spoken use, and English is limited to larger hotels outside the major cities. In Rwanda, national requirements for mandatory consumer information allow English, French or Kinyarwanda, while observed menus are commonly in English or French.\
+\
+The synonym problem is therefore not decorative. At least four dish-name clusters in the priority markets carry genuine spelling and meaning divergence, including the ugali, posho, bugali and ubugali family; mishkaki against mshikaki; matoke against matooke; and samosa against samoosa, samsao and mashal. One cluster is not merely a spelling variant but two distinct foods sharing a name: koeksister denotes both an Afrikaner twisted doughnut and a Cape Malay spiced braided pastry, and Cape Malay samosas are commonly spelled samoosas locally [23]. A synonym table that collapses these would be actively wrong.\
+\
+### 8.2 The regulatory position in PEWA's target markets\
+\
+PEWA's allergen and dietary layer will sit ahead of the regulatory floor in its priority markets, and the programme should decide that explicitly rather than discover it later.\
+\
+The international baseline is clear. The Codex General Standard for the Labelling of Prepackaged Foods requires declaration of the major allergenic foods, an ingredient list in descending order of weight, and prohibits food being described in a false, misleading or deceptive manner [10][11]. Codex's Code of Practice on Food Allergen Management for Food Business Operators covers food service endpoints and requires that accurate allergen information be available to consumers at the point of sale where food is not prepackaged [12]. That same code deliberately excludes non-immunological conditions such as lactose intolerance and sulphite sensitivity from its scope, a boundary PEWA should reproduce rather than paper over [12].\
+\
+The East African position is narrower. The regional standard applies to the labelling of prepackaged foods offered to consumers or for catering purposes, and defines foods for catering purposes as those used in restaurants, canteens, schools and hospitals [6][7]. Its mandatory particulars, including the name of the food, ingredient list, net contents and date marking, attach to the label. The 2014 edition was adopted nationally across the region, as TZS 538:2015 in Tanzania [17], US EAS 38:2014 in Uganda [7] and RS EAS 38:2013 in Rwanda [8], and a third edition was notified jointly by Burundi, Kenya, Rwanda, Tanzania and Uganda as DEAS 38:2024 [6][18]. Nutrition and claims are governed by parallel regional standards, and the EAC's own harmonised criteria state that claims on food presentation or advertising must be clear, accurate and based on scientific evidence [6].\
+\
+Kenya's national layer adds specifics including a GMO declaration requirement and nutrition per 100 grams, referencing the regional nutrition and claims standards [14], with English and or Kiswahili required on labels [15].\
+\
+The gap is precise and consequential: these instruments regulate the label on prepackaged food. None of the sources reviewed establishes a mandate for allergen declaration on freshly prepared, unpackaged restaurant food served to a seated or delivered customer. PEWA publishing ingredient and allergen data for such items is therefore voluntary, unreviewed by any authority, and carries the full weight of consumer safety on trust. That argues for provenance recording on every allergen value, a review step before publication, and an explicit distinction in the customer interface between a business declaration and a verified fact.\
+\
+## 9. Multi-Location and Reusable Menu Management (Area F)\
+\
+The commercial answer to reuse is consistent and simple: items are shared, groupings are not, and the interesting decisions are all about authority and versioning.\
+\
+Toast permits a menu item to be shared across menu groups while menu groups themselves cannot be shared across menus, and it maintains multiple versions of a menu item so that changes can propagate selectively across locations [1][2]. Square scopes menus by location, which makes location assignment a property of the menu rather than of the item [3]. Lightspeed shares menus with selected business locations while items exist independently of screens [5].\
+\
+Observed chains confirm the pattern in practice. ArtCaffe publishes an identical category set across six branches while operating them under different formats, which is central standardisation with format-level divergence and no evidence of local category invention [24]. BBROOD, a Kenyan bakery chain that expanded from two outlets to six, describes its bread basis as the same across the chain while localising particular products, including a millet and oat sourdough [24]. Holiday Inn's published breakfast implementation guide mandates specific core menu elements and reserves a slot for a regional favourite, with mandatory category signage above buffet stations [28]. That last pattern is the most useful governance precedent found anywhere in this study: a central standard, an enforced national core, and a bounded, named slot for local content.\
+\
+Prices and availability are handled separately from structure throughout. Toast supports location-specific prices, menu-specific prices and time-specific prices as distinct overrides on a single item [2]. Uber Eats does not permit availability hours to be set at category level, only at item and modifier-group level, with modifier groups inheriting visibility from their parent [2]. Deliveroo applies different prices to the same item for pickup and delivery [4]. The generalisation for PEWA is that structure is shared and resolved, while price and availability are overridden at the narrowest possible scope.\
+\
+What no source establishes is any standard for override authority, version lineage or change control. There is no external authority governing who may rename a shared item, when a location diverges permanently from the chain standard, or how a retirement propagates. That absence is itself the finding, and PEWA will be inventing this layer rather than adopting it.\
+\
+## 10. Business Customisation and Taxonomy Governance (Area G)\
+\
+No external standard for restaurant-facing taxonomy governance was located. What follows is therefore **Interpretation** supported by the observed precedents, and it should be read as a proposal rather than a description of consensus.\
+\
+Four principles follow from the evidence. First, separate the stored record from the published name, following Clover's distinction between point-of-sale and customer-facing names [4]; this single decision removes most of the pressure that makes businesses resist a standard library, because local language stops competing with the canonical name. Second, treat the canonical classification as a mapping target rather than a rendering constraint, so that a business renaming "Starters" to "Cold Starters" or "Platers to Share" changes presentation without changing classification. Third, cap custom categories rather than banning them, since observed menus already use house-branded headings such as "PASTA CLUB" [35] and force-avoid banning them would drive the practice underground. Fourth, bind custom categories to a parent and to a review state, so that "PASTA CLUB" is recorded as a child of the pasta family with business-local scope, rather than as an unclassified node.\
+\
+The addition, rename, mapping, retirement and review cycle that follows is set out in the companion classification catalogue, which carries a status column for exactly this purpose. The status tiers, Core, Optional, Regional and Candidate, are the mechanism that makes cultural specificity structurally legitimate: a category that is correct for Burundi but wrong for a Danish bakery is not a failed category, it is a Regional one, and the library says so on its face rather than leaving each business to work that out.\
+\
+## 11. Customer Discovery and Search (Area H)\
+\
+Search quality is determined far more by attributes and synonyms than by category structure, and this is the least intuitive finding in the study for a team building a taxonomy.\
+\
+The evidence for the first half is direct. Delivery platforms filter primarily on cuisine type and dish, with ratings as a secondary axis, and Glovo exposes a top-level Traditional food cuisine facet in Kenya rather than a category for it [31]. A category tree answers "where in the menu is this", which is a navigational question a customer asks when browsing a menu they already have in hand. It does not answer "what can I eat tonight", which is the question that drives discovery, and that question is answered by cuisine, dietary requirement, meal occasion, price band and availability.\
+\
+The evidence for the second half is the synonym inventory. A customer in Kampala searching for "posho" should find ugali; a customer in Dar es Salaam searching "Kili" should find Kilimanjaro [25]; a customer searching "samooza" should find samosa. None of those are recoverable from a canonical name without an explicit synonym record, and the divergent meaning of koeksister shows the failure mode in the other direction, where an over-broad synonym rule returns the wrong food [23].\
+\
+Three levels of search should be distinguished. Business search seeks an establishment, and is served by cuisine, location, service point, amenity and rating. Menu search seeks a named menu, and is served by occasion, service point, availability and price band. Item search seeks a dish, and is served by item name, synonyms, ingredients, attributes, cuisine and price. They share a vocabulary but not a ranking model, and conflating them is what makes search feel broken in practice.\
+\
+Regional cuisine is the dimension most likely to be mis-modelled as a category. The Dar es Salaam restaurant that runs thirty-eight Swahili dishes and twenty-two international dishes under two lunch headings and calls itself three cuisines from one kitchen [22] demonstrates the point exactly: cuisine is an attribute of the item, and a cuisine-named menu or section is a display convenience layered over that attribute.\
+\
+## 12. The Proposed PEWA Classification Model\
+\
+### 12.1 Dimension structure\
+\
+PEWA should model seven independent dimensions, of which precisely one is hierarchical.\
+\
+1. **Menu collection**, owned by a business or location, holding all of its menus.\
+2. **Named menu**, a published orderable surface within a collection, carrying its own availability window.\
+3. **Menu type**, the pricing and service construct: a la carte, table d'hote, semi, cyclical, California, banquet, prix fixe or buffet.\
+4. **Service period**, the occasion dimension: breakfast, brunch, lunch, afternoon tea, dinner, late night, happy hour, all day.\
+5. **Category**, the only hierarchical dimension, scoped to a named menu.\
+6. **Course**, an optional positional assignment applied at service.\
+7. **Attribute layer**, a faceted descriptor set attached to items and, where meaningful, to categories.\
+\
+Alongside these sit four non-dimension objects that are frequently mistaken for dimensions: the menu item, which is the reusable sellable unit and exists once regardless of how many placements reference it; the modifier group and modifier, which are configurable choices; the combo, which is an item whose components are themselves items; and the item reference, which lets one item act as a side in one placement and as a standalone category entry in another.\
+\
+The consequence of this structure is that reusability requires assignment at the placement level, not duplication of the item. A business that serves the same beef brochette on its lunch menu, its dinner menu and its room-service menu holds one item and three placements. This is exactly what the commercial systems converge on [1][3][5], and it is the mechanism that satisfies the brief's requirement that menus and items be reusable across service points without unnecessary duplication.\
+\
+### 12.2 Category families and depth limits\
+\
+The library should be organised as a small number of families with subcategories beneath them, capped at two levels by default, with the cap applied per channel at rendering time rather than imposed on the data. The Deliveroo two-level constraint [4] and the Toast subgroup flattening in online ordering [2] together justify treating depth as a presentation decision.\
+\
+The families proposed, with status, are set out in the companion catalogue. The design principle behind them is worth stating because it is the part most likely to be challenged. Families are defined by culinary function rather than by cuisine, because cuisine operates as an attribute. Where an African staple needs its own family because it functions as a base rather than an accompaniment, that staple becomes a family in its own right rather than a subcategory of sides. Starches and staples is therefore a family in the East African set, and beans and legumes is another, because in the observed regional model both are structural components of the meal rather than things ordered on the side [19][20].\
+\
+This produces deliberate non-symmetry across regional sets, which is correct. The East African set leads with staples, stews and sauces, beans and legumes, grilled and skewered preparations, and relishes. The West African set leads with swallows and stiff doughs, soups and stews, and small chops. The Southern African set leads with braai and grill, small plates, starches, sides and curries. The North African set leads with mezze and cold appetisers, tagines and stews, rice and couscous, grills and kebabs, and pastries and sweets. A single flattened list covering all four would serve none of them.\
+\
+### 12.3 Status tiers and regional treatment\
+\
+The four-tier status system is the mechanism that resolves the tension between standardisation and cultural specificity, and it should be treated as a core part of the model rather than as metadata.\
+\
+**Core** categories are those with direct evidence across multiple markets and business types, and are offered to every participating business as defaults. **Optional** categories are common and well-evidenced but not universal, and are offered for a business to adopt. **Regional** categories are evidenced in specific markets, are flagged as such so that a business outside that region is never offered them by default, and are never removed merely for being regional. **Candidate** categories are those with weak or single-source evidence, held outside the published library until the evidence base justifies promotion, and reviewable.\
+\
+The alternative to the Regional tier is the trap this assignment warns against. Forcing isombe into a soup category, or ugali into a side dish, to achieve coverage against a Western template, is precisely the practice that makes a standard library unusable in the markets it is meant to serve. The Regional tier exists so that that outcome is not required.\
+\
+## 13. Recommendations\
+\
+Treat the multi-dimensional model as the primary recommendation and everything else as subordinate to it. A category tree is one dimension of seven, and any decision taken about categories before the dimensions are separated will have to be revisited.\
+\
+Adopt the four-tier status system at the outset and use it to govern every addition. A business proposing a category should be able to propose a status with it, and the review question is evidence, not preference.\
+\
+Model the staple-led meal structure explicitly rather than accommodating it incidentally. For PEWA's priority markets, a meal set pattern in which a dish is served with a staple and a sauce or accompaniment is a first-class structural idea, because it is how those kitchens actually work. Without it, either the staple is duplicated into dozens of item names, as observed in Rwanda [19], or the business declines to use the library at all.\
+\
+Separate verifiable facts, declared claims and inferred classifications into different trust bands, and never render an inferred value as though it were declared. Record provenance on every allergen value.\
+\
+Store the canonical classification separately from every published name, in every language. This is the single highest-leverage decision for adoption, and it is already validated in commerce [4].\
+\
+Assign at the placement level rather than duplicating items, and make availability and price overrides as narrow in scope as the commercial platforms make them [2][3][4].\
+\
+Record synonyms as first-class data with per-language scope and an explicit non-merge rule for terms that share a name but not a referent, such as koeksister [23].\
+\
+Cap rendered depth per channel and treat depth as presentation, not data [2][4].\
+\
+Publish the Regional tier as a visible feature of the library rather than a footnote, because it is the part that earns trust in the markets PEWA is targeting.\
+\
+## 14. Contradictions in Practice\
+\
+The following contradictions were observed and are deliberately preserved rather than resolved, since resolving them by assertion would misrepresent the evidence.\
+\
+**There is no agreed national dish.** The designation is claimed for matoke in Uganda, nyama choma in Kenya, chipsi mayai in Tanzania, brochettes in Rwanda and bobotie in South Africa, often in the same publication [22][25][34]. This is a cultural and political question, not a classification one, and PEWA should not encode any claim in the library.\
+\
+**The same word denotes different foods.** Koeksister refers to both an Afrikaner twisted doughnut and a Cape Malay spiced braided pastry [23], and ugali is described as a maize meal in one source and as cassava flour dough in another [20][25]. A synonym rule that merges these returns incorrect results.\
+\
+**Platforms disagree on the top of the hierarchy**, as set out in section 3.2, and no source claims authority over the others.\
+\
+**Course is sometimes a category and sometimes a property.** The National Restaurant Association's canonical sequence treats appetizers, soups and salads as an ordered list [34], while Toast treats courses as a separate assignment feature [2]. Both are in live use.\
+\
+**"Sweets" and "Desserts" are not interchangeable.** One East African bakery chain uses Fresh Pastries and Sweets as a combined category [24], while the same market's hotel menus use Desserts [19] and Dolci [35]. These are different scopes, not different words.\
+\
+**Accompanying relishes move between categories.** Kachumbari appears as a menu line in its own right in one Rwandan venue [19] and as a named accompaniment to two separate dishes in another [35].\
+\
+**Spelling divergence is normal in published menus**, including "Platers" for "Platters" on a live Kampala menu [21] and mishkaki against mshikaki in Dar es Salaam [22]. Standardising spelling would misrepresent what businesses actually publish.\
+\
+## 15. Evidence Gaps and Open Questions\
+\
+The following are genuine gaps in the evidence assembled, stated so that PEWA does not over-weight the confident sections.\
+\
+**Burundi menu structure is unevidenced.** Dish evidence is sound; no full published menu from a Bujumbura sit-down restaurant was located. This is the single largest gap in an area the brief weights heavily, and it should be closed by direct fieldwork before the Burundian regional set is treated as validated.\
+\
+**North African menu structure rests on one secondary source.** The proposed mezze-shaped family set is inference from dish inventories plus a single structural description, not observed practice.\
+\
+**Central Africa beyond the Great Lakes was not researched** to a comparable depth, and should not be inferred from East African findings.\
+\
+**No external authority governs override authority, versioning or change control** for restaurant menu taxonomies. Section 10 is therefore entirely interpretive, and the one governance precedent found, Holiday Inn's mandated core plus regional favourite slot [28], comes from a single branded chain.\
+\
+**Category depth limits are documented for Deliveroo and inferred elsewhere.** Other platform limits were not established from vendor documentation.\
+\
+**Dietary claim rules for East African restaurants were not established.** The regional standards reviewed address nutrition and health claims for labelling [6], but no instrument specific to restaurant menu claims was located, so the distinction between declared and verified claims in section 8.1 is a PEWA proposal with no external precedent.\
+\
+**Bar and buffet category practice rests on vendor guidance**, not standards bodies [27][35].\
+\
+**Whether "hoteli", which denotes a local eatery in Kiswahili, collides meaningfully with "hotel" in search behaviour was not tested.** The lexical collision is real and documented in Kiswahili restaurant vocabulary, but its effect on PEWA's discovery was not measured.\
+\
+**Tea as an East African category was not researched in depth**, despite spiced and sweetened teas appearing on observed menus [24].\
+\
+## 16. Companion Deliverables\
+\
+This report is Deliverable 1. Four companion files accompany it.\
+\
+Deliverable 2 is the structured classification catalogue, provided as both XLSX and CSV, with proposed classification ID, parent ID, classification type, category family, name, definition, inclusion and exclusion rules, alternative names and synonyms, regional and cuisine relevance, applicable business types, source references, evidence strength and proposed status.\
+\
+Deliverable 3 is the tags and filters catalogue, provided in both formats, covering attribute name, definition, permitted values, synonyms, search and filter relevance, trust band, safety considerations and evidence.\
+\
+Deliverable 4 provides worked menu structure examples for eight business types: an independent restaurant, an East African local-food restaurant, a multi-location cafe chain, a hotel with several service points, a bakery and confectionery, a bar, a delivery-only kitchen, and a business offering configurable meals. Each example shows the same seven-dimension model applied to a real observed menu where one was available.\
+\
+Deliverable 5 is the reconciliation and gap report, covering duplicate classifications, conflicting terminology, uncertain classifications, underrepresented cuisines, weaknesses in the evidence base and the specific decisions PEWA still needs to take.\
+\
+## 17. References\
+\
+1. Toast, "Menu Hierarchy", Toast Platform Guide. https://doc.toasttab.com/doc/platformguide/adminMenuHierarchy.html\
+2. Toast platform documentation, including menu hierarchy, course assignment, sales categories, versioned menu items and modifier item references. https://doc.toasttab.com/\
+3. Square Help Centre, documentation distinguishing menu categories from time- and location-scoped menus. https://squareup.com/help/us/en\
+4. Clover merchant documentation, menu structure, separate point-of-sale and online item names, and display-name overrides. https://www.clover.com/\
+5. Lightspeed Restaurant product documentation, menu, screen, item and combo structure. https://www.lightspeedhq.com/\
+6. East African Community and Kenya Bureau of Standards, Draft East African Standard DEAS 38:2024, Labelling of pre-packaged foods, General requirements. https://www.kebs.org/wp-content/uploads/2025/02/DEAS-38-2024-Labelling-and-pre-packaged-foods-Requirements.pdf\
+7. Uganda National Standards, US EAS 38:2014, Labelling of pre-packaged foods, General requirements. https://www.scribd.com/document/916485069/US-EAS-38-2014-STANDARD\
+8. Rwanda Standards Board webstore entry for RS EAS 38:2013, Labelling of pre-packaged foods, General requirements. https://portal.rsb.gov.rw/webstore_view.php?i=NDMwMThGQmtOd1ozQTNw\
+9. East African Community Gazette, September 2014, notifying EAS 38:2013 second edition and its scope. https://www.eac.int/documents?controller=download&task=download.file&file=63a8aa33-ea5d-455c-ab06-214ee1581f55&name=EAC%20Gazette%2015%20September%202014.pdf\
+10. World Trade Organization, technical briefing on Codex standards and mandatory food labelling particulars. https://www.wto.org/english/tratop_e/tbt_e/3_codex_e.pdf\
+11. "Food Allergy Labeling Laws: International Guidelines for Residents and Travelers", PubMed Central, summarising Codex CXS 1-1985 allergen requirements and African regional standards EAS 38:2014, EAS 803, EAS 804 and EAS 805. https://pmc.ncbi.nlm.nih.gov/articles/PMC10169132/\
+12. Codex Alimentarius, CXC 80-2020, Code of Practice on Food Allergen Management for Food Business Operators. https://www.fao.org/fao-who-codexalimentarius/sh-proxy/en/?lnk=1&url=https%253A%252F%252Fworkspace.fao.org%252Fsites%252Fcodex%252FStandards%252FCXC+80-2020%252FCXC_080e.pdf\
+13. Codex Alimentarius, CXC 1-1969, General Principles of Food Hygiene. https://openknowledge.fao.org/server/api/core/bitstreams/6866dc55-d2c0-48dd-a528-a4d634f1b0b4/content\
+14. Kenya Bureau of Standards, draft DKS 2455:2024, Food Safety General Standard. https://www.kebs.org/wp-content/uploads/2024/06/DKS-2455_2024-Food-Safety_-General-Standard.docx\
+15. International Trade Administration, trade.gov, Kenya Labeling and Marking Requirements. https://www.trade.gov/country-commercial-guides/kenya-labelingmarking-requirements\
+16. LabelYog, "EAC food labelling requirements (EAS 38)". https://labelyog.com/guides/eac-food-labelling\
+17. TradeBarriers, national adoption of EAS 38:2014 as TZS 538:2015, Tanzania Bureau of Standards. https://tradebarriers.org/ntm/regulations/index/page:83/sort:title/direction:asc\
+18. ePing, WTO Technical Barriers to Trade notification G/TBT/N/BDI/563 with related notifications by Burundi, Kenya, Rwanda, Tanzania and Uganda. https://epingalert.org/en/DOL/GetDocument?dolLink=G/TBTN25/BDI563&notificationId=97676\
+19. Tania's Cuisine and Lounge, Kigali, published menu with sections, items, Rwandan franc prices and portion variants. https://taniascuisine.rw/menu\
+20. Mars Guest House, Rwanda, published menu of flat priced lines including ugali, brochettes and isambaza. https://marsguesthouse.rw/menu.php\
+21. The Lawns, Kampala, published menu with starters, grill, sharing and banquet sections. https://thelawns.co.ug/menu\
+22. Arafat Restaurant, Dar es Salaam, published menu with per-section dish counts and Swahili and international lunch menus. https://arafatrestaurant.co.tz\
+23. Braai Society, Cape Town, published menu with small plates, starches, sides, feasts and sauces sections. https://braaisociety.co.za\
+24. ArtCaffe, Nairobi, published category set applied across six branches. https://artcaffe.co.ke/\
+25. "Beer in Africa", overview of African brewing, traditional fermented drinks and national brand portfolios. https://en.wikipedia.org/wiki/Beer_in_Africa\
+26. East African Breweries Limited, Kenya, brand portfolio spanning lager, malt and non-alcoholic ranges. https://www.eabl.co.ke/\
+27. Paytronix, "Sample Bar Menu Templates: How to Design a Bar Menu". https://www.paytronix.com/blog/sample-bar-menu-templates\
+28. Holiday Inn, IHG, Breakfast Buffet Implementation Guide with brand-mandated core menu elements and a regional favourite slot. https://www.hotelsigns.com/holidayinn/skins/holidayinnrefresh2020/files/Holiday-Inn_ImplementationGuide_V4.pdf\
+29. Hilton Orlando Buena Vista Palace, published breakfast and brunch menu composed from component selections. https://buenavistapalace.com/wp-content/uploads/2025/12/LetterPress-Breakfast-Menu-2025.pdf\
+30. Glovo Kenya, merchant guidance on menu item descriptions, quantities and dietary attributes. https://sell.glovoapp.com/ke/en/resources/news/how-to-make-the-most-out-of-your-glovo-menu/\
+31. Glovo Kenya, Traditional food cuisine facet used for discovery browsing. https://glovoapp.com/en/ke/glovo-delivery/categories/traditional\
+32. United Nations Supply Chain Services, UNSPSC product classification. https://www.unspsc.org/\
+33. GS1, standards and product classification. https://www.gs1.org/\
+34. National Restaurant Association, educational resources covering menu sequencing, menu types and menu engineering. https://restaurant.org/\
+35. Radisson Hotel Group, hotel restaurant menu documents observed for Kigali properties, including Italian and lounge menus and a published dietary amenity vocabulary. https://www.radissonhotels.com/\
+36. Serena Hotels, hotel restaurant menu documents observed for Kigali properties, including buffet, table d'hote, a la carte and in-room dining offerings. https://www.serena.com/\
+\
+Note on hotel menu sources. References 35 and 36 are organisation-level citations. The menus referred to in sections 5.2, 7 and 8.1 were read from menu documents published by these operators and consulted in October 2026; menus at these properties change frequently, so the observations should be re-verified before being relied upon for design decisions.\
+\
+---\
+\
+**Deliverables 2 to 5** are attached. All catalogues are supplied in both XLSX and CSV, and each workbook carries a Source Key sheet resolving the `S[n]` reference convention.\
+\
+<deliver-assets>\
+<media type="file" src="/Users/theo/pewa_deliverables/PEWA-F02-R01_Deliverable-2_Classification-Catalogue.xlsx" caption="Deliverable 2 \'97 Structured Classification Catalogue (63 entries: 40 families, 19 regional categories, 4 structural rules)" />\
+<media type="file" src="/Users/theo/pewa_deliverables/PEWA-F02-R01_Deliverable-2_Classification-Catalogue.csv" caption="Deliverable 2 \'97 same catalogue in CSV" />\
+<media type="file" src="/Users/theo/pewa_deliverables/PEWA-F02-R01_Deliverable-3_Tags-and-Filters-Catalogue.xlsx" caption="Deliverable 3 \'97 Tags and Filters Catalogue (58 attributes with trust bands and safety notes)" />\
+<media type="file" src="/Users/theo/pewa_deliverables/PEWA-F02-R01_Deliverable-3_Tags-and-Filters-Catalogue.csv" caption="Deliverable 3 \'97 same catalogue in CSV" />\
+<media type="file" src="/Users/theo/pewa_deliverables/PEWA-F02-R01_Deliverable-4_Menu-Structure-Examples.xlsx" caption="Deliverable 4 \'97 Menu Structure Examples for the eight business archetypes" />\
+<media type="file" src="/Users/theo/pewa_deliverables/PEWA-F02-R01_Deliverable-4_Menu-Structure-Examples.csv" caption="Deliverable 4 \'97 same examples in CSV" />\
+<media type="file" src="/Users/theo/pewa_deliverables/PEWA-F02-R01_Deliverable-5_Reconciliation-and-Gap-Report.md" caption="Deliverable 5 \'97 Reconciliation and Gap Report, with the PEWA decision list" />\
+<media type="file" src="/Users/theo/pewa_deliverables/PEWA-F02-R01_Source-Key.csv" caption="Source key resolving all S[n] citations used in the companion catalogues" />\
+</deliver-assets>}
